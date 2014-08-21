@@ -22,11 +22,7 @@ var Duplicator = React.createClass({
           ref='input'
           onChange={this.handleChange} />
         <h3>Duplicate</h3>
-        <div
-          dangerouslySetInnerHTML={{
-            __html: this.state.value
-          }}
-        />
+        <p>{this.state.value}</p>
       </div>
     )
   }
