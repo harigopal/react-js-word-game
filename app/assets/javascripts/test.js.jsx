@@ -1,23 +1,25 @@
 /** @jsx React.DOM */
 
-var outputStyle = function (successState) {
-  return {
-    backgroundColor: successState ? '#66FF66' : 'default'
+var CommonMixin = {
+  outputStyle: function (successState) {
+    return {
+      backgroundColor: successState ? '#66FF66' : 'default'
+    }
+  },
+  render: function () {
+    return (
+      <div>
+        <input
+        ref='input'
+        onChange={this.handleChange} />
+        <p style={this.outputStyle(this.state.succeeded)}>{this.state.value}</p>
+      </div>
+      )
   }
 };
 
-var resultRenderer = function () {
-  return (
-    <div>
-      <input
-      ref='input'
-      onChange={this.handleChange} />
-      <p style={outputStyle(this.state.succeeded)}>{this.state.value}</p>
-    </div>
-    )
-};
-
 var Duplicator = React.createClass({
+  mixins: [CommonMixin],
   getInitialState: function () {
     return { value: 'Nothing has been typed yet.', succeeded: false };
   },
@@ -28,11 +30,11 @@ var Duplicator = React.createClass({
     if (newValue === 'Hello world!') {
       this.setState({succeeded: true});
     }
-  },
-  render: resultRenderer
+  }
 });
 
 var Reverser = React.createClass({
+  mixins: [CommonMixin],
   getInitialState: function () {
     return { value: 'Start typing!', succeeded: false };
   },
@@ -43,6 +45,5 @@ var Reverser = React.createClass({
     if (newValue === 'I think, therefore I am.') {
       this.setState({succeeded: true});
     }
-  },
-  render: resultRenderer
+  }
 });
