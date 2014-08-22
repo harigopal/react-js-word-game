@@ -40,3 +40,6 @@ gem 'spring',        group: :development
 
 gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 gem 'slim-rails'
+
+# Puma webserver
+gem 'puma'
