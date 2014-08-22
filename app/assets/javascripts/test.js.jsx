@@ -1,14 +1,8 @@
 /** @jsx React.DOM */
 
 var outputStyle = function (successState) {
-  if (successState) {
-    return {
-      backgroundColor: '#66FF66'
-    }
-  } else {
-    return {
-      backgroundColor: 'default'
-    }
+  return {
+    backgroundColor: successState ? '#66FF66' : 'default'
   }
 };
 
